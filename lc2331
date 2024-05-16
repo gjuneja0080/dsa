@@ -1,0 +1,13 @@
+class Solution:
+    def evaluateTree(self, root: Optional[TreeNode]) -> bool:
+        def dfs(node):
+            if not node.left and not node.right: return node.val != 0
+            left_tree = dfs(node.left)
+            right_tree = dfs(node.right)
+            if node.val == 2:
+                evalroot = left_tree or right_tree
+            else:
+                evalroot = left_tree and right_tree
+            return evalroot
+            
+        return dfs(root)
