@@ -1,0 +1,28 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        palin = list()
+        if x == 0:
+            return 0
+        
+        elif (x >= 2**(31)-1 or x <= -2**31):    
+            return 0
+        
+        else:
+            while(x%10 == 0):
+                x = x//10
+                
+            list_x = list(str(x))
+            
+            for i in reversed(list_x):
+                if(i == '-'):
+                    palin.insert(0, '-')
+                else:
+                    palin.append(i)
+            
+            num = int(''.join(palin))
+            if(num >= 2**(31)-1 or num <= -2**31):
+                return 0
+            else:
+                return num
+            
+            
